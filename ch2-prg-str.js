@@ -30,16 +30,19 @@ When you have that working, modify your program to print "FizzBuzz" for numbers 
 let num = 1;
 let printing = "";
 while (num < 101){
-  	printing = num
-  	if (num % 3==0 && num % 5==0){
-      	printing = "FizzBuzz";
-    } else if (num % 3==0){
-		printing = "Fizz";
-    } else if (num % 5==0){
-        printing = "Buzz";
-    }
-  	console.log(printing);
-  	num ++;
+  printing = num;
+  if (num % 3==0 && num % 5==0){
+    printing = "FizzBuzz";
+    
+  } else if (num % 3==0){
+    printing = "Fizz";
+    
+  } else if (num % 5==0){
+    printing = "Buzz";
+    
+  }
+  console.log(printing);
+  num ++;
 }
 
 //method 2:
@@ -48,7 +51,7 @@ let num = 1;
 let printing = "";
 while (num < 101){
   	if (num % 3==0){
-		printing += "Fizz";
+    printing += "Fizz";
     } 
   	if (num % 5==0){
         printing += "Buzz";
