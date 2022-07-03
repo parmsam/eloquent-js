@@ -12,10 +12,13 @@ It may be useful to know that you can find the length of a string by writing .le
 
 // Your code here.
 let abc = "#";
-while (abc.length < 8){
+let num_triangles = "#######".length
+while (abc.length < num_triangles){
 	console.log( abc );
   	abc += "#";
 }
+// test answer
+console.log(abc === "#######" ? true: false)
 
 //FizzBuzz
 /*WritWrite a program that uses console.log to print all the numbers from 1 to 100, with two exceptions. For numbers divisible by 3, print "Fizz" instead of the number, and for numbers divisible by 5 (and not 3), print "Buzz" instead.
