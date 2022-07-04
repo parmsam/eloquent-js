@@ -1,24 +1,25 @@
-// Minimum
+x// Minimum
 /*The previous chapter introduced the standard function Math.min that returns its smallest argument. We can build something like that now. Write a function min that takes two arguments and returns their minimum*/
 
 // Your code here.
+// method 1
 const min = function(a,b){
-  if(a==b) return a
-  else if(a<b) return a;
+  if(a<=b) return a;
   else return b;
 };
 
-//method 2 with arrow notation for js functions
+//method 2 with arrow function notation
 const min = (a,b) => {
-  if(a==b) return a
-  else if(a<b) return a;
+  if(a<=b) return a;
   else return b;
 };
 
-console.log(min(0, 10));
-// → 0
-console.log(min(0, -10));
-// → -10
+//method 3 with arrow function notation and ternary operator
+const min = (a,b) => {
+  return a<= b ? a : b;
+}
+console.log(min(0, 10)); // → 0
+console.log(min(0, -10)); // → -10
 
 //Recursion
 /*We’ve seen that % (the remainder operator) can be used to test whether a number is even or odd by using % 2 to see whether it’s divisible by two. Here’s another way to define whether a positive whole number is even or odd:
@@ -33,12 +34,11 @@ Define a recursive function isEven corresponding to this description. The functi
 
 Test it on 50 and 75. See how it behaves on -1. Why? Can you think of a way to fix this?*/
 // Your code here.
-const isEven = function(a){
-  	if(a<0) a = Math.abs(a)
-  
-	if(a == 0) return true
-  	else if(a==1) return false
-  	else return isEven(a-2)
+const isEven = (a) => {
+  a = Math.abs(a);
+  if(a==0) return true;
+  else if(a==1) return false;
+  else return isEven(a-2);
 }
 console.log(isEven(50));
 // → true
@@ -56,20 +56,31 @@ Next, write a function called countChar that behaves like countBs, except it tak
 */
 
 // Your code here.
+//method 1
 let countBs = (a) => {
-	b = 0
-  	for(i=0; i < a.length; i++){
-      if(a[i] == "B") b += 1
-    }
-  	return(b)
+  b = 0;
+  for(i=0; i < a.length; i++){
+    if(a[i] == "B") b += 1;
+  }
+  return(b);
+}
+//method 2
+let countBs = (a) => {
+  //bean count, string position, string length
+  b = 0, i = 0, l=a.length;
+  while(l != 0){
+    if(a[i] == "B") b++;
+    i++; l--;
+  }  
+  return(b);
 }
 
 let countChar = (a, c) => {
-	b = 0
-  	for(i=0; i < a.length; i++){
-      if(a[i] == c) b += 1
-    }
-  	return(b)
+  b = 0;
+  for(i=0; i < a.length; i++){
+    if(a[i] == c) b++;
+  }
+  return(b);
 }
 
 console.log(countBs("BBC"));
