@@ -74,7 +74,7 @@ function nth(list, n) {
 To find out whether values should be compared directly (use the === operator for that) or have their properties compared, you can use the typeof operator. If it produces "object" for both values, you should do a deep comparison. But you have to take one silly exception into account: because of a historical accident, typeof null also produces "object".*/
 
 function deepEqual(a, b){
-  if (typeof(a) === typeof(b) & a ==== b){
+  if (typeof(a) === typeof(b) & a === b){
     true
   } else{
     false
