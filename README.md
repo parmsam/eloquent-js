@@ -1,3 +1,3 @@
 # eloquent-js-exercises
 
-Exercises from [Eloquent Javascript book by Marijn Haverbeke](https://eloquentjavascript.net/).
+Worked exercises for [Eloquent Javascript book](https://eloquentjavascript.net/) by Marijn Haverbeke.
