@@ -15,6 +15,7 @@ let range = (start, end, order = 1) => {
   }
   return(range_array);
 }
+
 //Next, write a sum function that takes an array of numbers and returns the sum of these numbers. Run the example program and see whether it does indeed return 55.
 let sum = (numbers) => {
   let sum_total = 0;

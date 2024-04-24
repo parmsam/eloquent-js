@@ -11,6 +11,17 @@
 It may be useful to know that you can find the length of a string by writing .length after it.*/
 
 // Your code here.
+
+//method 1
+let x = "#######".length;
+let abc;
+for (let number = 1; number <= x; number++) {
+  console.log(abc);
+  abc = "#".repeat(number);
+}
+console.log(abc === "#######" ? true : false)
+
+// method 2
 let abc = "#";
 let num_triangles = "#######".length
 while (abc.length < num_triangles){
@@ -31,7 +42,7 @@ When you have that working, modify your program to print "FizzBuzz" for numbers 
 
 //method 1:
 let num = 1;
-let printing = "";
+let printing;
 while (num < 101){
   printing = num;
   if (num % 3==0 && num % 5==0){
@@ -74,7 +85,6 @@ for( num = 1; num < 101; num ++){
     }
   console.log(printing.length == 0 ? num : printing)
 } 
-
 
 //Chessboard
 /*Write a program that creates a string that represents an 8×8 grid, using newline characters to separate lines. At each position of the grid there is either a space or a "#" character. The characters should form a chessboard.
