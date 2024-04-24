@@ -57,7 +57,7 @@ Next, write a function called countChar that behaves like countBs, except it tak
 
 // Your code here.
 //method 1
-let countBs = (a) => {
+const countBs = (a) => {
   b = 0;
   for(i=0; i < a.length; i++){
     if(a[i] == "B") b += 1;
@@ -65,7 +65,7 @@ let countBs = (a) => {
   return(b);
 }
 //method 2
-let countBs = (a) => {
+const countBs = (a) => {
   //bean count, string position, string length
   b = 0, i = 0, l=a.length;
   while(l != 0){
@@ -75,7 +75,7 @@ let countBs = (a) => {
   return(b);
 }
 
-let countChar = (a, c) => {
+const countChar = (a, c) => {
   b = 0;
   for(i=0; i < a.length; i++){
     if(a[i] == c) b++;

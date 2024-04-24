@@ -105,10 +105,10 @@ When you have a program that generates this pattern, define a binding size = 8 a
 //method 1
 let i = 1;
 let bSize = 8;
-while(i<bSize + 1){
+while(i < bSize + 1){
 	if (i % 2 == 0) console.log("# # # # ");
-  	else console.log(" # # # #");
-  	i++;
+  else console.log(" # # # #");
+  i++;
 }
 
 //method 2
@@ -116,4 +116,10 @@ let i = 1, bSize = 8;
 while(i < bSize + 1){
   console.log(i % 2 == 0 ? "# # # # ": " # # # #")
   i++;
+}
+
+// method 3
+let pat1 = " # # # #", pat2 = "# # # # ";
+for (let i = 0; i < size; i++) {
+  console.log(i % 2 == 0 ? " # # # #" : "# # # # ")
 }

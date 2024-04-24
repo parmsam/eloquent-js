@@ -1,0 +1,21 @@
+---
+title: "ch00 - intro"
+format: html
+---
+
+## Intro to JS
+
+- JavaScript was introduced in 1995 as a way to add programs to web pages in the Netscape Navigator browser.
+- After its adoption outside of Netscape, a standard document was written to describe the way the JavaScript language should work so that the various pieces of software. 
+    - This document is called the ECMAScript standard, after the Ecma International organization that conducted the standardization.
+- JavaScript is ridiculously liberal in what it allows. 
+
+## Book structure
+
+- The first 12 chapters discuss the JavaScript language. 
+- The next seven chapters are about web browsers and the way JavaScript is used to program them. 
+- Finally, two chapters are devoted to Node.js, another environment to program JavaScript in. 
+- There are five project chapters in the book that describe larger example programs to give you a taste of actual programming.
+
+
+

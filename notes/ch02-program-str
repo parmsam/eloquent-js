@@ -1,0 +1,39 @@
+---
+title: "ch02-program-str"
+format: html
+---
+
+## Bindings
+
+- The special keyword `let` is used to bind a value to a name: `let mood = "light";`
+- You can use a single `let` to bind multiple names to values. Each binding is separated by a comma: `let one = 1, two = 2;`
+- The other special keyword is `const`, which is used to define a constant binding. This means that the value of the binding cannot be changed: `const greeting = "Hello";`
+- A binding name can be any word, but it cannot start with a digit. It can include digits, but not as the first character. It can also include dollar signs (`$`) and underscores (`_`).
+
+## Console.log function 
+
+- Most JavaScript systems (including all modern web browsers and Node.js) provide a console.log function that writes out its arguments to some text output device.
+
+## While loops
+
+- While loops in JavaScript are written like this: `while (condition) { body }`
+
+## Do loops
+
+- Do loops are similar to while loops, but they test the condition after executing the body of the loop instead of before. This means that the body is always executed at least once.
+- They're written like this: `do { body } while (condition);`
+
+## For loops
+
+- For loops are written like this: `for (let i = 0; i < 10; i++) { console.log(i); }`, where `i` is the loop variable.
+- The part before the first semicolon initializes the loop, usually by defining a binding. The second part is the expression that checks whether the loop must continue. The final part updates the state of the loop after every iteration.
+
+## Break and continue
+
+- The break statement has the effect of immediately jumping out of the enclosing loop.
+- The continue statement is similar, but instead of breaking out of the loop, it jumps to the next iteration.
+
+## Comments
+
+- Comments in JavaScript start with `//` and continue until the end of the line.
+- You can also write multi-line comments by enclosing the text in `/*` and `*/`.

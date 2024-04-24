@@ -1,0 +1,54 @@
+---
+title: "ch01-values"
+format: html
+---
+
+## Bits in JS
+
+- JavaScript uses a fixed number of bits, 64 of them, to store a single number value.
+- This can represent 2^64 (about 18 quintillion) different numbers.
+
+## Special numbers
+
+- There are three special values in JavaScript that are considered numbers but don’t behave like normal numbers:
+    - `Infinity`
+    - `-Infinity`
+    - `NaN`
+
+## Strings
+
+- There are three ways to create a string in JavaScript:
+    - Double quotes: `"Down on the West Coast"`
+    - Single quotes: `'Down on the West Coast'`
+    - Backticks: `Down on the West Coast`
+        - Backtick-quoted strings, usually called template literals, can do a few more tricks: `half of 100 is ${100 / 2}`
+- JS uses the Unicode standard to work with characters. Specifically, it uses UTF-16 encoding. This can represent a lot of characters ($2^{16}$ different characters), but it can’t represent every character in every writing system.
+- Strings cannot be divided, multiplied, or subtracted. However, the `+` operator can be used on them to concatenate—to glue two strings together
+
+## Ternary (Conditional) Operator
+
+- The ternary operator provides a shorter syntax for the if...else statements. 
+- The operator uses the value to the left of the question mark to decide which of the two other values to “pick”.
+- The syntax is:
+    - `condition ? exprIfTrue : exprIfFalse`
+
+## Empty values
+
+- There are two special values, written null and undefined, that are used to denote the absence of a meaningful value.
+
+## Type coercion
+
+- When an operator is applied to the “wrong” type of value, JavaScript will quietly convert that value to the type it needs, using a set of rules that often aren’t what you want or expect.
+- Expressions like 0 == false and "" == false are also true because of automatic type conversion.
+- As a result, the author recommend using the three-character comparison operators defensively to prevent unexpected type conversions from tripping you up.
+
+## Short-circuiting of logical operators
+
+- These operators are convert the value on their left side to Boolean type in order to decide what to do.
+- The `||` operator will return the value to its left when that value can be converted to true and will return the value on its right otherwise
+- The `&&` operator works similarly but the other way around. When the value to its left is something that converts to false, it returns that value, and otherwise it returns the value on its right.
+-  The `??` operator resembles `||`, but returns the value on the right only if the one on the left is null or undefined, not if it is some other value that can be converted to false.
+- Here are examples of each:
+    - `null || "user"` yields "user"
+    - `null ?? "user"` yields "user"
+    - `null && "user"` yields null
