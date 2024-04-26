@@ -1,0 +1,40 @@
+---
+title: "ch18 - http and forms"
+format: html
+---
+
+# Protocol
+
+## Request
+- Here's an example of a simple HTTP request:
+
+```{md}
+GET /18_http.html HTTP/1.1 
+Host: eloquentjavascript.net
+User-Agent: Your browser's name
+```
+
+- The first line is the request line, which contains the method (GET), the path (/18_http.html), and the protocol version (HTTP/1.1).
+    - Common methods are GET, POST, PUT, DELETE, and HEAD. However, the server is not obliged to carry out every request it gets.
+
+## Response
+
+- Here's an example of a simple HTTP response:
+
+```{md}
+ HTTP/1.1 200 OK
+ Content-Length: 87320
+ Content-Type: text/html
+ Last-Modified: Fri, 13 Oct 2023 10:05:41 GMT
+```
+
+- The first line is the status line, which contains the protocol version (HTTP/1.1), the status code (200), and the status message (OK).
+    - Common status codes are 200 (OK), 404 (Not Found), and 500 (Internal Server Error).
+    -  Status codes starting with a 2 indicate that the request succeeded. Codes starting with 4 mean there was something wrong with the request. Codes that start with 5 mean an error happened on the server and the request is not to blame.
+- The first line of a request or response may be followed by any number of headers. These are lines in the form name: value that specify extra informa- tion about the request or response. 
+    - The content-length and type tell us the size and type of the response document.
+    - Without a Content-Type header in the response, the browser won’t know how to display the document.
+
+
+
+

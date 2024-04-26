@@ -1,0 +1,46 @@
+---
+title: "ch13 - js and the browser"
+format: html
+---
+
+## Protocols
+
+- Protocols are the rules and conventions for communication between computers.
+
+### HTTP
+
+- Hypertext Transfer Protocol (HTTP) is a protocol for retrieving named resources from the web
+- It specifies that the side making the request should start with a line like this, naming the resource and the version of the protocol it is using:
+    - `GET /index.html HTTP/1.1`
+- HTTP treats the network as a streamlike device into which you can put bits and have them arrive at the correct destination in the correct order.
+
+## TCP
+
+- Transmission Control Protocol (TCP) is a protocol that allows you to establish a connection between two computers and send data back and forth.
+
+## Ports
+
+- One computer must be waiting, or listening, for other computers to start talking to it. Each listener has a number (called a port) associated with it. 
+    - Most protocols specify which port should be used by default. For example, HTTP uses port 80. SMTP, the protocol used for sending email, uses port 25.
+- The listening computer is called the server, and the connecting computer is called the client.
+
+## The Web
+
+- The world wide web is therefore a set of protocols and conventions that allow computers to visit web pages and communicate with each other.
+- To become a part of the web, you need to connect a machine to the internet and have it listening on port 80 with the HTTP protocol.
+
+## Uniform resource locator
+
+- The URL looks like this:
+    - `http://www.example.com:80/index.html`
+    - where `http` is the protocol, `www.example.com` is the domain name, `80` is the port, and `index.html` is the path.
+
+## HTML
+
+- HTML is a language for describing the structure of a document.
+- HTML is parsed in a remarkably error-tolerant way. When tags that should be there are missing, the browser automatically adds them. The way this is done has been standardized.
+
+## Browsers and security
+
+- Browsers severely limit the things a JavaScript program may do: it can’t look at the files on your computer or modify anything not related to the web page it was embedded in.
+- Isolating a programming environment in this way is called sandboxing, the idea being that the program is harmlessly playing in a sandbox. 
