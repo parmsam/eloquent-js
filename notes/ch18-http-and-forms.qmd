@@ -6,7 +6,7 @@ format: html
 # Protocol
 
 ## Request
-- Here's an example of a simple HTTP request:
+- Here's an example of a simple HTTP **request**:
 
 ```{md}
 GET /18_http.html HTTP/1.1 
@@ -14,12 +14,13 @@ Host: eloquentjavascript.net
 User-Agent: Your browser's name
 ```
 
-- The first line is the request line, which contains the method (GET), the path (/18_http.html), and the protocol version (HTTP/1.1).
+- The first line is the request line, which contains the **method** (GET), the **path** (/18_http.html), and the **protocol version** (HTTP/1.1).
     - Common methods are GET, POST, PUT, DELETE, and HEAD. However, the server is not obliged to carry out every request it gets.
+- GET requests should be used for requests that do not have side effects but simply ask for information. Requests that change something on the server, for example creating a new account or posting a message, should be expressed with other methods, such as POST.
 
 ## Response
 
-- Here's an example of a simple HTTP response:
+- Here's an example of a simple HTTP **response**:
 
 ```{md}
  HTTP/1.1 200 OK
@@ -28,13 +29,28 @@ User-Agent: Your browser's name
  Last-Modified: Fri, 13 Oct 2023 10:05:41 GMT
 ```
 
-- The first line is the status line, which contains the protocol version (HTTP/1.1), the status code (200), and the status message (OK).
+- The first line is the status line, which contains the **protocol version** (HTTP/1.1), the **status code** (200), and the **status message** (OK).
     - Common status codes are 200 (OK), 404 (Not Found), and 500 (Internal Server Error).
-    -  Status codes starting with a 2 indicate that the request succeeded. Codes starting with 4 mean there was something wrong with the request. Codes that start with 5 mean an error happened on the server and the request is not to blame.
-- The first line of a request or response may be followed by any number of headers. These are lines in the form name: value that specify extra informa- tion about the request or response. 
+    -  Status codes starting with a 2 indicate that the request succeeded. 
+    - Codes starting with 4 mean there was something wrong with the request. 
+    - Codes that start with 5 mean an error happened on the server and the request is not to blame.
+- What usually follows is the response body, which contains the document that was requested.
+- The first line of a request or response may be followed by any number of headers. These are lines in the form `name: value` that specify extra information about the request or response. 
     - The content-length and type tell us the size and type of the response document.
     - Without a Content-Type header in the response, the browser won’t know how to display the document.
 
+## HTTP Sandboxing
+
+- The person who controls the   script might not have the same interests as the person on whose computer it is running.
+- Browsers protect us by disallowing scripts to make HTTP requests to other domains. This is called the **same-origin policy**.
+- This can be an annoying problem when building systems that want to access several domains for legitimate reasons. Fortunately, servers can include a header like this in their response to explicitly indicate to the browser that it is okay for the request to come from another domain: `Access-Control-Allow-Origin: *`
+
+## Security and HTTPS
+
+- The secure HTTP protocol, used for URLs starting with https://, wraps HTTP traﬀic in a way that makes it harder to read and tamper with.
+- Before exchanging data, the client verifies that the server is who it claims to be by asking it to prove that it has a cryptographic certificate issued by a certificate authority that the browser recognizes.
+- Then all data going over the connection is encrypted in a way that should prevent eavesdropping and tampering.
+- HTTPS prevents other people from impersonating the website you are trying to talk to and from snooping on your communication. It’s not perfect, and there have been various incidents where HTTPS failed because of forged or stolen certificates and broken software, but it is a lot safer than plain HTTP.
 
 
 
