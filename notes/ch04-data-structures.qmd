@@ -1,0 +1,97 @@
+---
+title: "ch04 - data structures"
+format: html
+---
+
+# Arrays
+
+- Data structure in JS to store a list of items
+- It is written as a list of values between square brackets, separated by commas
+- The first index of an array is zero this is called zero-based indexing
+
+# Properties
+
+- Almost all JavaScript values have properties. The exceptions are null and undefined.
+- The two main ways to access properties in JavaScript are with a dot and with square brackets. 
+- Both value.x and value[x] access a property on value—but not necessarily the same property. This is useful because the dot notation works only with names that look like valid binding names.
+- Just like strings, arrays have a length property that tells us how many elements the array has.
+
+# Methods
+
+- Both string and array values contain, in addition to the length property, a number of properties that hold function values.
+- For example, every string has a toUpperCase property. Another example is the push method adds values to the end of an array. The pop method does the opposite, removing the last value in the array and returning it.
+- Properties that contain functions are generally called methods of the value they belong to, as in “toUpperCase is a method of a string”.
+
+# Object
+
+- Values of the type object are arbitrary collections of properties.
+- One way to create an object is by using braces as an expression.   
+- Inside the braces, you write a list of properties separated by commas.
+- Each property has a name followed by a colon and a value. When an object is written over multiple lines, indenting it as shown in this example helps with readability. 
+- Properties whose names aren’t valid binding names or valid numbers must be quoted:
+
+```{ojs}
+let day1 = {
+  squirrel: false,
+  events: ["work", "touched tree", "pizza", "running"]
+};
+```
+
+# Comparing objects
+
+- When you compare objects with JavaScript’s == operator, it compares by identity: it will produce true only if both objects are precisely the same value. 
+- Comparing different objects will return false, even if they have identical properties
+- There is no “deep” comparison operation built into JavaScript that compares objects by contents, but it is possible to write it yourself.
+
+# Rest parameters
+
+- It is possible to include an extra parameter at the end of a function definition that collects any number of arguments into an array.
+- To write such a function, you put three dots before the function’s last parameter. When such a function is called, the rest parameter is bound to an array containing all further arguments. 
+
+```{ojs}
+function max(...numbers) {
+  let result = -Infinity;
+  for (let number of numbers) {
+    if (number > result) result = number;
+  }
+  return result;
+}
+console.log(max(4, 1, 9, -2));
+```
+
+- It's also possible to call a function with an array of arguments using the spread syntax. The three-dot notation can be used to “spread” an array out when calling a function.
+
+```{ojs}
+let numbers = [5, 1, 7];
+console.log(max(...numbers));
+console.log(max(9, ...numbers, 2));
+// the alternative with console.log(max(numbers)) would give NaN
+```
+
+# Destructuring
+
+- The two most common forms of destructuring are object destructuring and array destructuring.
+- Destructuring is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+- Here are some examples of destructuring:
+
+```{ojs}
+let [first, second] = [1, 2];
+console.log(first); // 1
+console.log(second); // 2
+let {name} = {name: "Faraji", age: 23};
+console.log(name); // Faraji
+```
+
+
+# Serialization
+
+- Serializing data is when you convert data into a flat description.
+- It is useful when you want to store data in a file or send it over the network.
+- A popular serialization format is called JSON (pronounced “Jason”), which stands for JavaScript Object Notation.
+
+# JSON
+
+- JSON looks similar to JavaScript’s way of writing arrays and objects, with a few restrictions. 
+- All property names have to be surrounded by double quotes, and only simple data expressions are allowed—no function calls, bindings, or anything that involves actual computation. 
+- Comments are not allowed in JSON.
+- JavaScript gives us the functions `JSON.stringify` and `JSON.parse` to convert data to and from this format. The first takes a JavaScript value and returns a JSON-encoded string. The second takes such a string and converts it to the value it encodes.

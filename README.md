@@ -12,5 +12,5 @@ Chapters that I'll read and work on:
 -   [ ] Ch06 - The Secret Life of Objects
 -   [ ] Ch11 - Asynchronous Programming
 -   [x] Ch13 - JavaScript and the Browser
--   [ ] Ch18 - HTTP and Forms
+-   [x] Ch18 - HTTP and Forms
 -   [ ] Ch20 - Node.js
