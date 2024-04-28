@@ -1,0 +1,136 @@
+---
+title: "ch05-higher-order-functions"
+format: html
+---
+
+# Abstracting repitition
+
+- We have seen that functions are a good way to abstract out repitition.
+
+```{ojs}
+function repeat(n, action) {
+  for (let i = 0; i < n; i++) {
+    action(i);
+  }
+}
+
+repeat(3, console.log);
+let labels = [];
+repeat(5, i => {
+  labels.push(`Unit ${i + 1}`);
+});
+console.log(labels);
+```
+
+# Higher-order functions
+
+- Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.
+- Higher-order functions allow us to abstract over actions, not just values. 
+
+```{ojs}
+function greaterThan(n) {
+  return m => m > n;
+}
+let greaterThan10 = greaterThan(10);
+console.log(greaterThan10(11));
+// → true
+function noisy(f) {
+  return (...args) => {
+    console.log("calling with", args);
+    let result = f(...args);
+    console.log("called with", args, ", returned", result);
+    return result;
+  };
+}
+noisy(Math.min)(3, 2, 1);
+// → calling with [3, 2, 1]
+// → called with [3, 2, 1] , returned 1
+```
+
+- Let's try and use higher-order functions to abstract out the fizz buzz example, where we print fizz for multiples of 3, buzz for multiples of 5 and fizzbuzz for multiples of 3 and 5.
+```{ojs}
+function repeat(n, action, start = 0) {
+  for (let i = start; i <= n; i++) {
+    action(i);
+  }
+}
+function check(test, then) {
+  if (test) then();
+}
+repeat(16, n => {
+    let output = "";
+    check(n % 3 == 0, () => {
+        output += "Fizz";
+    });
+    check(n % 5 == 0, () => {
+        output += "Buzz";
+    });
+    console.log(n, output);
+}, start = 1);
+```
+
+## forEach() function
+
+- The forEach() function is a higher-order function that is available on arrays.
+
+```{ojs}
+["A", "B"].forEach(l => console.log(l));
+
+```
+
+# filter(), map() and reduce() functions
+
+```{ojs}
+function filter(array, test) {
+  let passed = [];
+  for (let element of array) {
+    if (test(element)) {
+      passed.push(element);
+    }
+  }
+  return passed;
+}
+filter([1, 2, 3, 4], n => n > 2);
+function map(array, transform) {
+  let mapped = [];
+  for (let element of array) {
+    mapped.push(transform(element));
+  }
+  return mapped;
+}
+map([1, 2, 3, 4], n => n * n);
+function reduce(array, combine, start) {
+  let current = start;
+  for (let element of array) {
+    current = combine(current, element);
+  }
+  return current;
+}
+reduce([1, 2, 3, 4], (a, b) => a + b, 0);
+```
+
+## some() and find()
+
+- The some() function returns true if any of the elements in the array satisfy the test function.
+- The find() function returns the first element in the array that satisfies the test function.
+
+```{ojs}
+function some(array, test) {
+  for (let element of array) {
+    if (test(element)) {
+      return true;
+    }
+  }
+  return false;
+}
+some([1, 2, 3, 4], n => n > 2);
+
+function find(array, test) {
+  for (let element of array) {
+    if (test(element)) {
+      return element;
+    }
+  }
+  return undefined;
+}
+find([1, 2, 3, 4], n => n > 2);
