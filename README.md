@@ -8,7 +8,7 @@ Chapters that I'll read and work on:
 -   [x] Ch02 - Program Structure
 -   [x] Ch03 - Functions
 -   [x] Ch04 - Data Structures: Objects and Arrays
--   [ ] Ch05 - Higher-order Functions
+-   [x] Ch05 - Higher-order Functions
 -   [ ] Ch06 - The Secret Life of Objects
 -   [ ] Ch11 - Asynchronous Programming
 -   [x] Ch13 - JavaScript and the Browser
