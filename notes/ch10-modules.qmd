@@ -43,8 +43,37 @@ console.log(nomDeJour(3));
     - an online service where one can download (and upload) packages
     - a command-line tool that helps you manage packages on your own machine
 
-# CommonJS Modules
+## CommonJS Modules
+
+- CommonJS is a module system for JavaScript that was developed for server-side JavaScript environments. Because JavaScript historically did not provide a module system, the CommonJS system was built on top of it.
+- It uses the `require` function to import modules and the `exports` object to export values from a module.
+- In CommonJS, each file is treated as a separate module, and the variables and functions defined in that file are scoped to that module.
+
+```{ojs}
+const ordinal = require("ordinal");
+const {days, months} = require("date-names");
+
+exports.formatDate = function(date, format) {
+  return format.replace(/YYYY|M(MMM)?|Do?|dddd/g, tag => {
+    if (tag == "YYYY") return date.getFullYear();
+    if (tag == "M") return date.getMonth();
+    if (tag == "MMMM") return months[date.getMonth()];
+    if (tag == "D") return date.getDate();
+    if (tag == "Do") return ordinal(date.getDate());
+    if (tag == "dddd") return days[date.getDay()];
+  });
+};
+```
+
+- While CommonJS code is still something you will run across, there is no real reason to write new programs in this style anymore.
 
 # Building and Bundling
 
+- Because fetching a single big file tends to be faster than fetching a lot of tiny ones, web programmers have started using tools that combine their programs (which they painstakingly split into modules) into a single big file before they publish it to the Web. These tools are called bundlers.
+- Minifiers are tools that take a JavaScript program and make it smaller by automatically removing comments and whitespace, renaming bindings, and replacing pieces of code with equivalent code that take up less space.
+- It is not uncommon for the code that you find in an NPM package or that runs on a web page to have gone through multiple stages of transformation.
+
 # Module Design
+
+- Focused modules that compute values are applicable in a wider range of programs than bigger modules that perform complicated actions with side effects.
+- If you want to design for composability, find out what data structures other people are using and, when possible, follow their example.
