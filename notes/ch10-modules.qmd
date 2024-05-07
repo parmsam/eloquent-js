@@ -1,0 +1,50 @@
+---
+title: "ch10-modules"
+format: html
+---
+
+# ES Modules
+
+- ES modules are a way to organize code into reusable pieces. 
+- They rely on the `import` and `export` keywords.
+- The `export` keyword can be put in front of a function, class, or binding definition to indicate that that binding is part of the module’s interface.
+
+```{ojs}
+const names = ["Sunday", "Monday", "Tuesday", "Wednesday",
+               "Thursday", "Friday", "Saturday"];
+
+export function dayName(number) {
+  return names[number];
+}
+export function dayNumber(name) {
+  return names.indexOf(name);
+}
+```
+
+- The `import` keyword, followed by a list of binding names in braces, makes bindings from another module available in the current module.
+- A module’s interface thus consists of a collection of named bindings, which other modules that depend on the module can access.
+
+```{ojs}
+import {dayName as nomDeJour} from "./dayname.js";
+console.log(nomDeJour(3));
+// → Wednesday
+```
+
+# Packages
+
+- A package is a chunk of code that can be distributed (copied and installed). 
+- It may contain one or more modules and has information about which other packages it depends on. 
+- It also usually comes with documentation explaining what it does so that people who didn’t write it might still be able to use it.
+
+## NPM
+
+- NPM is the package manager for JavaScript.
+- It is two things: 
+    - an online service where one can download (and upload) packages
+    - a command-line tool that helps you manage packages on your own machine
+
+# CommonJS Modules
+
+# Building and Bundling
+
+# Module Design
