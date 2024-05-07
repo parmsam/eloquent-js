@@ -1,0 +1,66 @@
+---
+title: "ch08 - bugs and errors"
+format: html
+---
+
+# Strict mode
+
+- JavaScript can be made a little stricter by enabling strict mode. 
+- This can done by putting the string `use strict` at the top of a file or a function body.
+- Code inside classes and modules is automatically strict.
+
+# Types
+
+- Annotations can be added to function arguments and return values to indicate the types of values they are expected to be passed.
+- There are a number of different conventions for annotating types in JavaScript programs.
+- TypeScript is a language that is a strict superset of JavaScript. It adds typing to the language.
+
+# Testing
+
+- Tests usually take the form of little labeled programs that verify some aspect of your code.
+- Test suites are collections of tests. Test runners are programs that help you run test suites.
+- Here's an example of a test for the `toUpperCase` method of strings.
+```{ojs}
+function test(label, body) {
+  if (!body()) console.log(`Failed: ${label}`);
+}
+
+test("convert Latin text to uppercase", () => {
+  return "hello".toUpperCase() == "HELLO";
+});
+test("convert Greek text to uppercase", () => {
+  return "Χαίρετε".toUpperCase() == "ΧΑΊΡΕΤΕ";
+});
+test("don't convert case-less characters", () => {
+  return "مرحبا".toUpperCase() == "مرحبا";
+});
+```
+
+# Debugging
+
+- Use the **`console.log` function** to print the values of variables.
+- Browsers come with the ability to set a **breakpoint** in the browser on a specific line of your code.
+    - When the execution of the program reaches a line with a breakpoint, it is paused, and you can inspect the values of bindings at that point.
+- Another way to set a breakpoint is to include a **`debugger`** statement (consisting simply of that keyword) in your program.
+
+# Exceptions
+
+- **Exception handling** is where we deal with errors in a way where you stop what we are doing and immediately jump to a place that knows how to handle the problem.
+- Raising an exception resembles a super-charged return from a function: it jumps out of not just the current function but also its callers, all the way down to the first call that started the current execution. This is called **unwinding the stack**.
+- The `throw` keyword is used to raise an exception
+
+# Assertions
+
+- Assertions are checks inside a program that verify that something is the way it is supposed to be.
+- They are used not to handle situations that can come up in normal operation but to find programmer mistakes. 
+- Don't use them for every possible kind of bad input but instead reserve them for mistakes that are easy to make
+- For example, instead of silently returning undefined (which you get when reading an array property that does not exist), this will loudly blow up your program as soon as you misuse it:
+
+```{ojs}
+function firstElement(array) {
+  if (array.length == 0) {
+    throw new Error("firstElement called with []");
+  }
+  return array[0];
+}
+```

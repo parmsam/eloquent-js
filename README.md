@@ -10,7 +10,7 @@ Chapters that I'll read and work on:
 -   [x] Ch04 - Data Structures: Objects and Arrays
 -   [x] Ch05 - Higher-order Functions
 -   [ ] Ch06 - The Secret Life of Objects
--   [ ] Ch08 - Bugs and Errors
+-   [x] Ch08 - Bugs and Errors
 -   [ ] Ch10 - Modules
 -   [ ] Ch11 - Asynchronous Programming
 -   [x] Ch13 - JavaScript and the Browser
