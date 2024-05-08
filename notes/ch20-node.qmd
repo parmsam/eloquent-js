@@ -3,4 +3,86 @@ title: "ch20-nodejs"
 format: html
 ---
 
+# Node JS
+
+- Node JS was originally developed for the purpose of making asynchronous programming easy and convenient.
+- You can run node from the command line by typing `node` and then you can run JavaScript code. The text will go to the process’s standard output stream, rather than to a browser’s JavaScript console.
+
+```{ojs}
+$ node hello.js
+Hello world
+```
+
+## Process binding
+
+- Just like the console binding, the process binding is a global object that can be used to access the process object.
+- It provides the exit method, which can be used to end the process and set its exit status.
+- You can use process.argv, which is an array of strings that represent the command line arguments, to find the command line arguments given to your script.
+
+```{ojs}
+$ node
+> 1 + 1
+2
+> [-1, -2, -3].map(Math.abs)
+[1, 2, 3]
+> process.exit(0)
+$
+```
+
+# Modules
+
+- Node started out using the CommonJS module system. Now it uses the modern ES module system.
+- When a script’s filename ends in `.mjs`, it is considered to be such a module, and you can use import and export in it.
+
+# Installing with NPM
+
+- NPM is an online repository of JavaScript modules, many of which are specifically written for Node.
+- After running `npm install`, NPM will have created a directory called node_modules.
+- By default NPM installs packages under the current directory, rather than in a central place.
+
+```{ojs}
+$ npm install ini
+```
+
+# Package files
+
+- You will find not only a node_modules directory, but also a file called `package.json` in your current directory.
+- You can create it manually or run `npm init`.
+- This file contains information about the project, such as its name and version, and lists its dependencies.
+- When you run `npm install` without naming a package to install, NPM will install the dependencies listed in `package.json`.
+- When you install a specific package that is not already listed as a dependency, NPM will add it to `package.json`.
+
+```{ojs}
+{
+  "author": "Marijn Haverbeke",
+  "name": "eloquent-javascript-robot",
+  "description": "Simulation of a package-delivery robot",
+  "version": "1.0.0",
+  "main": "run.mjs",
+  "dependencies": {
+    "dijkstrajs": "^1.0.1",
+    "random-item": "^1.0.0"
+  },
+  "license": "ISC"
+}
+```
+
+# Versions
+
+- NPM demands that its packages follow a schema called **semantic versioning**.
+    - A semantic version consists of three numbers, separated by periods, such as 2.3.0.
+    - Every time new functionality is added, the middle number has to be incremented. 
+    - Every time compatibility is broken, so that existing code that uses the package might not work with the new version, the first number has to be incremented.
+- A caret character (`^`) in front of the version number for a dependency in package.json indicates that any version compatible with the given number may be installed. 
+    - For example, `"^2.3.0"` would mean that any version greater than or equal to 2.3.0 and less than 3.0.0 is allowed.
+- The npm command is also used to publish new packages or new versions of packages. If you run npm publish in a directory that has a package.json file, it will publish a package with the name and version listed in the JSON file to the registry.
+
+# The file system module
+
+# The HTTP module
+
+# Streams
+
+# A file server
+
 
