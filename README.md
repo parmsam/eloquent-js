@@ -15,7 +15,7 @@ Chapters that I'll read and work on:
 -   [x] Ch11 - Asynchronous Programming
 -   [x] Ch13 - JavaScript and the Browser
 -   [x] Ch18 - HTTP and Forms
--   [z] Ch20 - Node.js
+-   [x] Ch20 - Node.js
 
 ## Useful code snippets
 
