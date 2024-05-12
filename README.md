@@ -16,3 +16,7 @@ Chapters that I'll read and work on:
 -   [x] Ch13 - JavaScript and the Browser
 -   [x] Ch18 - HTTP and Forms
 -   [z] Ch20 - Node.js
+
+## Useful code snippets
+
+- Gets all h2 elements from a page which represent section titles in the book: `Array.from(document.querySelectorAll('h2')).map(h2 => h2.textContent);` 
