@@ -6,15 +6,68 @@ format: html
 # Asynchronicity
 
 - In a synchronous programming model, things happen one at a time.
+    - The solution to this problem, in a synchronous system, is to start additional threads of control.
+    - A **thread** is another running program whose execution may be interleaved with other programs by the operating system—since most modern computers contain multiple processors, multiple threads may even run at the same time, on different processors.
+    - Programming with threads is notoriously hard.
 - An asynchronous model allows multiple things to happen at the same time. 
     - When you start an action, your program continues to run. When the action finishes, the program is informed and gets access to the result (for example, the data read from disk).
-- 
+    - They work in browsers and via Node JS
 
 # Callbacks
 
+- Functions that need to wait for something take an extra argument are called **callback functions**.
+- An example of a callback function is `setTimeout`, which is used to schedule an action to happen after a delay.
+- Another example of a common asynchronous operation is reading a file from a device’s storage. Imagine you have a function `readTextFile`.
+
+```{ojs}
+setTimeout(() => console.log("Tick"), 500);
+readTextFile("shopping_list.txt", content => {
+  console.log(`Shopping List:\n${content}`);
+});
+// → Shopping List:
+// → Peanut butter
+// → Bananas
+```
+
 # Promises
 
+- A promise is a receipt representing a value that may not be available yet. It's an alternative to callbacks.
+- It provides a `then` method that allows you to register a function that should be called when the action for which it is waiting finishes. 
+    - When the promise is resolved, meaning its value becomes available, such functions (there can be multiple) are called with the result value.
+- The easiest way to create a promise is by calling `Promise.resolve`.
+
+```{ojs}
+let fifteen = Promise.resolve(15);
+fifteen.then(value => console.log(`Got ${value}`));
+// → Got 15
+```
+
+- A useful thing about the then method is that it itself returns another promise. Thus, you can “chain” multiple calls to then together to set up a sequence of asynchronous actions.
+
+```{ojs}
+function randomFile(listFile) {
+  return textFile(listFile)
+    .then(content => content.trim().split("\n"))
+    .then(ls => ls[Math.floor(Math.random() * ls.length)])
+    .then(filename => textFile(filename));
+}
+```
+
+- Generally, it is useful to think of a promise as a device that lets code ignore the question of when a value is going to arrive. 
+
 # Failure
+
+- A common convention is to use the first argument to the callback to indicate that the action failed, and the second to pass the value produced by the action when it was successful.
+
+```{ojs}
+someAsyncFunction((error, value) => {
+  if (error) handleError(error);
+  else processValue(value);
+});
+```
+
+- Promises make this easier. They can be either resolved (the action finished successfully) or rejected (it failed). 
+
 
 # Carla
 
